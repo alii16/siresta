@@ -7,11 +7,11 @@
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
             <div class="flex items-center gap-4">
                 @if(Auth::user()->foto_profil)
-                    <img src="{{ asset('storage/foto_profil/' . Auth::user()->foto_profil) }}"
-                        alt="Foto Profil"
+                    <img src="{{ asset('storage/foto_profil/' . Auth::user()->foto_profil) }}" alt="Foto Profil"
                         class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-white shadow-md transition-all duration-200">
                 @else
-                    <div class="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-4xl md:text-7xl mr-2">
+                    <div
+                        class="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-4xl md:text-7xl mr-2">
                         {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                     </div>
                 @endif
@@ -112,6 +112,39 @@
                 </div>
             </div>
 
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Line Chart: Diskusi Bulanan -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col">
+                    <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 17l6-6 4 4 8-8" />
+                        </svg>
+                        Tren Diskusi Bulanan
+                    </h4>
+                    <div id="apex-diskusi" style="height: 240px;"></div>
+                </div>
+                <!-- Pie Chart: Wisata Review Terbanyak -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col">
+                    <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3v10l6 6" />
+                        </svg>
+                        Wisata Paling Populer
+                    </h4>
+                    <div id="apex-wisata" style="height: 240px;"></div>
+                </div>
+                <!-- Donut Chart: Komposisi User -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col">
+                    <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3" />
+                        </svg>
+                        Komposisi User
+                    </h4>
+                    <div id="apex-user" style="height: 240px;"></div>
+                </div>
+            </div>
+
             <!-- Quick Actions -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                 <div class="flex items-center space-x-3 mb-6">
@@ -193,3 +226,47 @@
         @endif
     </div>
 @endsection
+@if(Auth::user()->role === 'admin')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Line Chart: Diskusi Bulanan
+    var optionsDiskusi = {
+        chart: { type: 'line', height: 240, toolbar: { show: false } },
+        series: [{
+            name: 'Diskusi',
+            data: @json($diskusiData)
+        }],
+        xaxis: { categories: @json($bulanLabels) },
+        colors: ['#2563eb'],
+        stroke: { curve: 'smooth', width: 3 },
+        fill: { type: 'gradient', gradient: { shade: 'light', type: "vertical", shadeIntensity: 0.5, gradientToColors: ['#60a5fa'], inverseColors: false, opacityFrom: 0.7, opacityTo: 0.2, stops: [0, 100] } },
+        markers: { size: 5, colors: ['#fff'], strokeColors: '#2563eb', strokeWidth: 3 },
+        grid: { borderColor: '#f3f4f6' }
+    };
+    new ApexCharts(document.querySelector("#apex-diskusi"), optionsDiskusi).render();
+
+    // Pie Chart: Wisata Review Terbanyak
+    var optionsWisata = {
+        chart: { type: 'pie', height: 240 },
+        labels: @json($wisataLabels),
+        series: @json($wisataData),
+        colors: ['#fbbf24', '#60a5fa', '#34d399', '#f472b6', '#a78bfa'],
+        legend: { position: 'bottom' },
+        dataLabels: { enabled: true, style: { fontWeight: 'bold' } }
+    };
+    new ApexCharts(document.querySelector("#apex-wisata"), optionsWisata).render();
+
+    // Donut Chart: Komposisi User
+    var optionsUser = {
+        chart: { type: 'donut', height: 240 },
+        labels: @json($userRoleLabels),
+        series: @json($userRoleData),
+        colors: ['#10b981', '#6366f1'],
+        legend: { position: 'bottom' },
+        dataLabels: { enabled: true }
+    };
+    new ApexCharts(document.querySelector("#apex-user"), optionsUser).render();
+});
+</script>
+
+@endif

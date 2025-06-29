@@ -3,7 +3,7 @@
 @section('content')
 <div class="min-h-screen bg-gwhite">
     <!-- Hero Section -->
-    <div class="bg-white border-b border-gray-200">
+    <div class="bg-white border-b border-gray-200" style="background-image: url('img/hero-header.jpg'); background-size: cover; background-position: center; height: fit-content;">
         <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
             <div class="text-center">
                 <div class="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium mb-4">
