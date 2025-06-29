@@ -89,21 +89,8 @@
 
                     <!-- Description -->
                     <p class="text-gray-600 text-sm mb-4 line-clamp-2 leading-relaxed">
-                        {{ $item->deskripsi ?? 'Destinasi wisata yang menawarkan keindahan alam dan pengalaman tak terlupakan untuk dikunjungi bersama keluarga.' }}
+                        {{ \Illuminate\Support\Str::limit($item->deskripsi ?? 'Destinasi wisata yang menawarkan keindahan alam dan pengalaman tak terlupakan untuk dikunjungi bersama keluarga.', 40) }}
                     </p>
-
-                    <!-- Features/Tags -->
-                    <div class="flex flex-wrap gap-1.5 mb-4">
-                        @php 
-                            $features = ['Foto Instagramable', 'Keluarga', 'Alam', 'Petualangan'];
-                            $selectedFeatures = array_slice($features, 0, rand(2,3));
-                        @endphp
-                        @foreach($selectedFeatures as $feature)
-                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">
-                                {{ $feature }}
-                            </span>
-                        @endforeach
-                    </div>
 
                     <!-- Stats Row -->
                     <div class="flex items-center justify-between text-sm text-gray-500 mb-4 pt-3 border-t border-gray-100">

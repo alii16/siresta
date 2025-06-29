@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="min-h-screen bg-gray-50">
+<div class="min-h-screen bg-white">
     <!-- Hero Image Section -->
     <div class="relative h-96 overflow-hidden">
         <img src="{{ asset('storage/' . $wisata->foto) }}" 

@@ -26,7 +26,7 @@
                         @endfor
                     </div>
                 </div>
-                <p class="text-sm text-gray-700 mb-1">{{ $review->komentar }}</p>
+                <p class="text-sm text-gray-700 mb-1">{{ \App\Helpers\BadwordFilter::filter($review->komentar) }}</p>
                 <p class="text-xs text-gray-500">{{ $review->created_at->diffForHumans() }}</p>
             </div>
         </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Review;
+use App\Helpers\BadwordFilter;
 
 class ReviewController extends Controller
 {
@@ -16,6 +17,7 @@ class ReviewController extends Controller
         ]);
 
         $data['user_id'] = auth()->id();
+        $data['komentar'] = BadwordFilter::filter($data['komentar']);
 
         Review::create($data);
 

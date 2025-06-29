@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Diskusi;
+use App\Helpers\BadwordFilter;
 
 class DiskusiController extends Controller
 {
@@ -16,9 +17,10 @@ class DiskusiController extends Controller
         ]);
 
         $data['user_id'] = auth()->id();
+        $data['pesan'] = BadwordFilter::filter($data['pesan']);
 
         Diskusi::create($data);
-
+        
         return back()->with('success', 'Pesan Anda telah dikirim.');
     }
 }

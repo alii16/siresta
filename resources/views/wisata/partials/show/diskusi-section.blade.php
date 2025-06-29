@@ -68,7 +68,7 @@
                             <p class="font-medium text-gray-900">{{ $komentar->user->name ?? 'Anonim' }}</p>
                             <span class="text-xs text-gray-500">{{ $komentar->created_at->diffForHumans() }}</span>
                         </div>
-                        <p class="text-gray-700">{{ $komentar->pesan }}</p>
+                        <p class="text-gray-700">{{ \App\Helpers\BadwordFilter::filter($komentar->pesan) }}</p>
                     </div>
 
                     @auth
@@ -77,7 +77,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3">
+                                    d="m15 15 6-6m0 0-6-6m6 6H9a6 6 0 0 0 0 12h3">
                                 </path>
                             </svg>
                             Balas
