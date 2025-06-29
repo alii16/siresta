@@ -9,6 +9,7 @@ class WisataController extends Controller
     public function index(Request $request)
     {
         $kategori = $request->query('kategori');
+        $search = $request->query('search');
 
         $query = Wisata::with('galeri');
 
@@ -16,9 +17,15 @@ class WisataController extends Controller
             $query->where('kategori', $kategori);
         }
 
+        if ($search) {
+        $query->where('nama', 'like', '%' . $search . '%');
+        }
+
         $wisata = $query->latest()->get();
 
-        return view('wisata.index', compact('wisata', 'kategori'));
+        $kategoriList = Wisata::select('kategori')->distinct()->pluck('kategori');
+
+        return view('wisata.index', compact('wisata', 'kategori', 'kategoriList', 'search'));
     }
     public function show($id)
     {
