@@ -117,7 +117,7 @@
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col">
                     <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
                         <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 17l6-6 4 4 8-8" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                         </svg>
                         Tren Diskusi Bulanan
                     </h4>
@@ -127,7 +127,7 @@
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col">
                     <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
                         <svg class="w-5 h-5 mr-2 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3v10l6 6" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                         Wisata Paling Populer
                     </h4>
@@ -136,8 +136,8 @@
                 <!-- Donut Chart: Komposisi User -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col">
                     <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3" />
+                        <svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" stroke="currentColor" viewBox="0 0 576 512">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M304 240l0-223.4c0-9 7-16.6 16-16.6C443.7 0 544 100.3 544 224c0 9-7.6 16-16.6 16L304 240zM32 272C32 150.7 122.1 50.3 239 34.3c9.2-1.3 17 6.1 17 15.4L256 288 412.5 444.5c6.7 6.7 6.2 17.7-1.5 23.1C371.8 495.6 323.8 512 272 512C139.5 512 32 404.6 32 272zm526.4 16c9.3 0 16.6 7.8 15.4 17c-7.7 55.9-34.6 105.6-73.9 142.3c-6 5.6-15.4 5.2-21.2-.7L320 288l238.4 0z" />
                         </svg>
                         Komposisi User
                     </h4>

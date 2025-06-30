@@ -15,7 +15,7 @@
             <textarea name="pesan" rows="3" required placeholder="Tanyakan sesuatu tentang destinasi ini..."
                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 mb-3"></textarea>
             <button type="submit"
-                class="bg-green-600 flex justify-center items-center hover:bg-green-700 cursor-pointer text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200">
+                class="bg-green-600 flex justify-center items-center hover:bg-green-700 cursor-pointer text-white font-medium py-3 px-3 rounded-full transition-colors duration-200">
                 <svg class="w-4 h-4 inline rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
@@ -89,10 +89,10 @@
                             <input type="hidden" name="wisata_id" value="{{ $wisata->id }}">
                             <input type="hidden" name="parent_id" value="{{ $komentar->id }}">
                             <div class="flex space-x-2">
-                                <textarea name="pesan" rows="2" required placeholder="Tulis balasan..."
+                                <textarea name="pesan" rows="1" required placeholder="Tulis balasan..."
                                     class="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"></textarea>
                                 <button type="submit"
-                                    class="flex justify-center items-center bg-green-600 hover:bg-green-700 cursor-pointer text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                    class="flex justify-center items-center bg-green-600 hover:bg-green-700 cursor-pointer text-white px-3 py-3 rounded-full text-sm font-medium transition-colors duration-200">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 rotate-90" fill="none"
                                         stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

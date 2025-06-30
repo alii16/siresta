@@ -85,7 +85,7 @@
                 </td>
                 <td class="px-6 py-4">
                     <span
-                        class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                        class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 hover:animate-pulse">
                         <div class="w-1.5 h-1.5 bg-green-400 rounded-full mr-1.5 animate-pulse"></div>
                         Aktif
                     </span>

@@ -67,7 +67,7 @@
                             </svg>
                             Lokasi di Peta
                         </h2>
-                        <div class="aspect-video w-full overflow-hidden rounded-lg">
+                        <div class="aspect-video w-full overflow-hidden rounded-lg mb-4">
                             <iframe src="{{ $wisata->maps_embed }}" 
                                     width="100%" 
                                     height="100%" 
@@ -77,6 +77,7 @@
                                     referrerpolicy="no-referrer-when-downgrade">
                             </iframe>
                         </div>
+                        <a href="#" class="bg-blue-600 text-white rounded-lg px-6 py-2 text-sm hover:bg-blue-700">Rute</a>
                     </div>
                 @endif
             </div>

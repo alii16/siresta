@@ -25,8 +25,13 @@
                     <option value="kuliner" {{ $kategori == 'kuliner' ? 'selected' : '' }}>Kuliner</option>
                 </select>
             </div>
+        
+            <div class="relative">
+                <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Cari Destinasi</label>
+                <input type="text" name="search" id="search" value="{{ request('search') }}" placeholder="Cari nama destinasi..." class="block w-48 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+            </div>
 
-            @if ($kategori)
+            @if ($kategori || request('search'))
                 <div class="pt-5">
                     <a href="{{ route('wisata.index') }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-red-700 bg-red-50 border border-red-200 rounded-lg hover:bg-red-100">
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -39,14 +44,34 @@
         </form>
     </div>
 
-    @if ($kategori)
+    @if ($kategori || request('search'))
         <div class="mt-4 pt-4 border-t border-gray-200">
-            <div class="flex items-center justify-between">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-50 text-blue-800">
-                    Filter: {{ ucfirst($kategori) }}
-                </span>
-                <span class="text-sm text-gray-600">{{ $wisata->count() }} hasil</span>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-2 md:space-y-0">
+                <div class="flex items-center gap-3">
+                    @if ($kategori)
+                        <span
+                            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-50 text-blue-800">
+                            Filter: {{ ucfirst($kategori) }}
+                        </span>
+                    @endif
+
+                    @if (request('search'))
+                        <span
+                            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-50 text-yellow-800">
+                            Cari: "{{ request('search') }}"
+                        </span>
+                    @endif
+                </div>
+                <span class="text-sm text-gray-600">{{ $wisata->count() }} hasil ditemukan</span>
             </div>
         </div>
     @endif
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('kategori').addEventListener('change', function () {
+            this.form.submit();
+        });
+    });
+</script>

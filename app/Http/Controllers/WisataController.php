@@ -9,6 +9,7 @@ class WisataController extends Controller
     public function index(Request $request)
     {
         $kategori = $request->query('kategori');
+        $search = $request->query('search');
 
         $query = Wisata::with('galeri');
 
@@ -16,9 +17,15 @@ class WisataController extends Controller
             $query->where('kategori', $kategori);
         }
 
+        if ($search) {
+        $query->where('nama', 'like', '%' . $search . '%');
+        }
+
         $wisata = $query->latest()->get();
 
-        return view('wisata.index', compact('wisata', 'kategori'));
+        $kategoriList = Wisata::select('kategori')->distinct()->pluck('kategori');
+
+        return view('wisata.index', compact('wisata', 'kategori', 'kategoriList', 'search'));
     }
     public function show($id)
     {
@@ -35,12 +42,17 @@ class WisataController extends Controller
     
     public function filter(Request $request)
     {
-        $kategori = $request->kategori;
-        $wisata = \App\Models\Wisata::when($kategori, function($q) use ($kategori) {
-            $q->where('kategori', $kategori);
-        })->with('reviews')->get();
+        $query = Wisata::query();
 
-        // Kembalikan view partial saja
+        if ($request->kategori) {
+            $query->where('kategori', $request->kategori);
+        }
+        if ($request->search) {
+            $query->where('nama', 'like', '%' . $request->search . '%');
+        }
+
+        $wisata = $query->with('reviews')->get();
+
         return view('wisata.partials.grid', compact('wisata'))->render();
     }
 }

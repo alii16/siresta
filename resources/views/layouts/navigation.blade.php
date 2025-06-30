@@ -12,7 +12,7 @@
                             </svg>
                         </div>
                         <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:from-blue-700 group-hover:to-indigo-700 transition-all duration-200">
-                            SIRESTA
+                            {{ config('app.name', 'WisataApp') }}
                         </span>
                     </a>
                 </div>
